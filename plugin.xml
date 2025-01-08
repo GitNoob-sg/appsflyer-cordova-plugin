@@ -62,9 +62,9 @@
         <config-file target="AndroidManifest.xml" parent="/*/application/activity[@android:name='MainActivity']">
             <intent-filter android:autoVerify="true">
               <action android:name="android.intent.action.VIEW"/>
-              <category android:name="android.intent.category.DEFAULT"/>
-              <category android:name="android.intent.category.BROWSABLE"/>
-              <data android:scheme="https" android:host="starhub.onelink.me"/>
+              <category android:name="android.intent.category.DEFAULT" />
+              <category android:name="android.intent.category.BROWSABLE" />
+              <data android:scheme="https" android:host="mystarhub.onelink.me" />
             </intent-filter>
         </config-file>
 
