@@ -39,8 +39,15 @@
         <clobbers target="AppsFlyerError"/>
     </js-module>
 
+   <!-- global parameters -->
+    <preference name="URL_NAME" />
+    <preference name="URL_SCHEME" />
+    <preference name="ASSOCIATED_DOMAIN" />
+    <preference name="ASSOCIATED_SUBDOMAIN" />
 
     <!-- android -->
+    <preference name="ANDROID_HOST_NAME" />
+  
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AppsFlyerPlugin">
@@ -59,12 +66,20 @@
                 </intent-filter>
             </receiver>
         </config-file>
+
+        <!-- Android Setup -->
         <config-file target="AndroidManifest.xml" parent="/*/application/activity[@android:name='MainActivity']">
             <intent-filter android:autoVerify="true">
               <action android:name="android.intent.action.VIEW"/>
               <category android:name="android.intent.category.DEFAULT" />
               <category android:name="android.intent.category.BROWSABLE" />
-              <data android:scheme="https" android:host="mystarhub.onelink.me" />
+              <data android:scheme="https" android:host="$ASSOCIATED_SUBDOMAIN" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="$ASSOCIATED_DOMAIN" android:scheme="$URL_SCHEME"/>
             </intent-filter>
         </config-file>
 
@@ -102,6 +117,27 @@
                <pod name="AppsFlyerFramework" spec="6.15.3"/>
             </pods>
         </podspec>
+      
+      <!-- iOS App Links Setup -->
+        <config-file target="*-Info.plist" parent="com.apple.developer.associated-domains">
+          <array>
+            <string>applinks:$ASSOCIATED_SUBDOMAIN</string>
+          </array>
+        </config-file>
+      
+        <!-- iOS URI Setup -->            
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+        <array>
+          <dict>
+           <key>CFBundleURLName</key>
+             <string>$URL_NAME</string>
+           <key>CFBundleURLSchemes</key>
+           <array>
+            <string>$URL_SCHEME</string>
+           </array>
+          </dict>
+        </array>
+        </config-file>  
     </platform>
 
 </plugin>
