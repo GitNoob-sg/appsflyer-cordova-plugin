@@ -46,8 +46,6 @@
     <preference name="ASSOCIATED_SUBDOMAIN" />
 
     <!-- android -->
-    <preference name="ANDROID_HOST_NAME" />
-  
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AppsFlyerPlugin">
