@@ -67,17 +67,11 @@
 
         <!-- Android Setup -->
         <config-file target="AndroidManifest.xml" parent="/*/application/activity[@android:name='MainActivity']">
-            <intent-filter android:autoVerify="true">
+            <intent-filter>
               <action android:name="android.intent.action.VIEW"/>
               <category android:name="android.intent.category.DEFAULT" />
               <category android:name="android.intent.category.BROWSABLE" />
-              <data android:scheme="https" android:host="$ASSOCIATED_SUBDOMAIN" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:host="$ASSOCIATED_DOMAIN" android:scheme="$URL_SCHEME"/>
+              <data android:host="$URL_SCHEME" />
             </intent-filter>
         </config-file>
 
@@ -115,27 +109,19 @@
                <pod name="AppsFlyerFramework" spec="6.15.3"/>
             </pods>
         </podspec>
-      
-      <!-- iOS App Links Setup -->
-        <config-file target="*-Info.plist" parent="com.apple.developer.associated-domains">
-          <array>
-            <string>applinks:$ASSOCIATED_SUBDOMAIN</string>
-          </array>
-        </config-file>
-      
-        <!-- iOS URI Setup -->            
-        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+          
+      <!-- iOS URI Setup -->            
+      <config-file target="*-Info.plist" parent="CFBundleURLTypes">
         <array>
-          <dict>
-           <key>CFBundleURLName</key>
-             <string>$URL_NAME</string>
-           <key>CFBundleURLSchemes</key>
-           <array>
-            <string>$URL_SCHEME</string>
-           </array>
-          </dict>
+            <dict>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                    <string>$URL_NAME</string>
+                    <string>$URL_SCHEME</string>
+                </array>
+            </dict>
         </array>
-        </config-file>  
+      </config-file>
     </platform>
 
 </plugin>
