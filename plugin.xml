@@ -42,6 +42,7 @@
    <!-- global parameters -->
     <preference name="URL_NAME" />
     <preference name="URL_SCHEME" />
+    <preference name="URL_HOST" />
     <preference name="ASSOCIATED_DOMAIN" />
     <preference name="ASSOCIATED_SUBDOMAIN" />
 
@@ -71,7 +72,7 @@
               <action android:name="android.intent.action.VIEW"/>
               <category android:name="android.intent.category.DEFAULT" />
               <category android:name="android.intent.category.BROWSABLE" />
-              <data android:host="$URL_SCHEME" />
+              <data android:host="$URL_HOST" android:scheme="$URL_SCHEME"/>
             </intent-filter>
         </config-file>
 
@@ -109,19 +110,6 @@
                <pod name="AppsFlyerFramework" spec="6.15.3"/>
             </pods>
         </podspec>
-          
-      <!-- iOS URI Setup -->            
-      <config-file target="*-Info.plist" parent="CFBundleURLTypes">
-        <array>
-            <dict>
-                <key>CFBundleURLSchemes</key>
-                <array>
-                    <string>$URL_NAME</string>
-                    <string>$URL_SCHEME</string>
-                </array>
-            </dict>
-        </array>
-      </config-file>
     </platform>
 
 </plugin>
