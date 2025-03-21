@@ -40,11 +40,11 @@
     </js-module>
 
    <!-- global parameters -->
-    <preference name="URL_NAME" />
+    <!-- <preference name="URL_NAME" /> -->
     <preference name="URL_SCHEME" />
     <preference name="URL_HOST" />
-    <preference name="ASSOCIATED_DOMAIN" />
-    <preference name="ASSOCIATED_SUBDOMAIN" />
+    <!-- <preference name="ASSOCIATED_DOMAIN" />
+    <preference name="ASSOCIATED_SUBDOMAIN" /> -=>
 
     <!-- android -->
     <platform name="android">
@@ -111,5 +111,17 @@
             </pods>
         </podspec>
     </platform>
+
+      <!-- iOS URI Setup -->            
+       <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+         <array>
+             <dict>
+                 <key>CFBundleURLSchemes</key>
+                 <array>
+                     <string>$URL_SCHEME</string>
+                 </array>
+             </dict>
+         </array>
+       </config-file>
 
 </plugin>
