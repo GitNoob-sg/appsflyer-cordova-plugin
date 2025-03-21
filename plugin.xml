@@ -110,7 +110,6 @@
                <pod name="AppsFlyerFramework" spec="6.15.3"/>
             </pods>
         </podspec>
-    </platform>
 
       <!-- iOS URI Setup -->            
        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
@@ -123,5 +122,6 @@
              </dict>
          </array>
        </config-file>
-
+   
+    </platform>
 </plugin>
