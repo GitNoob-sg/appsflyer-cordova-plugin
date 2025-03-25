@@ -44,7 +44,7 @@
     <preference name="URL_SCHEME" />
     <preference name="URL_HOST" />
     <!-- <preference name="ASSOCIATED_DOMAIN" />
-    <preference name="ASSOCIATED_SUBDOMAIN" /> -=>
+    <preference name="ASSOCIATED_SUBDOMAIN" /> -->
 
     <!-- android -->
     <platform name="android">
